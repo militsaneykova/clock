@@ -1,0 +1,100 @@
+
+<html>
+<head>Tuesday , June 6th</head>
+<style type="text/css">
+    body{
+        background-image: url('earth2.jpeg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 1600px;
+        height: 1000px;
+    }
+    #txt{
+        width:170px;
+        height: 60px;
+        background-color: black;
+        font-size: 50px;
+        text-align: center;
+        position: absolute;
+        color:white;
+
+    }
+
+    
+</style>
+<body onload="startTime()" >
+<form>
+    <div>
+        <input id="typehours" type="text">
+        <input id="typeminutes" type="text">  
+        <input id="typeseconds" type="text">   
+        <input id="button" type="button" onclick="csx( )" value="submit">
+    </div> 
+</form>
+<div id="txt"></div>
+
+<script>
+var hours;
+var minutes;
+var seconds;
+
+var showHours ;
+var showMin; 
+var showSec; 
+function startTime() {
+    var today = new Date();
+    showHours = today.getHours();
+    showMin = today.getMinutes(); 
+    showSec = today.getSeconds(); 
+    
+    showMin = checkTime(showMin);
+    showSec = checkTime(showSec);
+    document.getElementById('txt').innerHTML =
+    showHours + ":" + showMin + ":" + showSec;
+    var t = setTimeout(startTime, 500);
+check();
+}
+
+function checkTime(i) {
+    if (i < 10) {
+    i = "0" + i
+}
+    return i;
+}
+
+function csx(){
+hours = document.getElementById('typehours').value;
+minutes = document.getElementById('typeminutes').value;
+seconds = document.getElementById('typeseconds').value;
+//alert(hours+" "+ minutes+" "+ seconds+" "+showHours+" "+showMin+" "+showSec );
+//bool=true; 
+
+}
+
+function check(){
+
+   // alert("Bob");
+  if( hours == showHours && minutes == showMin && seconds == showSec){
+    alert("RING!") ;
+
+
+//check();
+
+document.getElementById('ring').src="alarm.mp3";
+}
+
+}
+
+
+
+function noring () {
+    document.getElementById('ring').src="#";
+}
+</script>
+
+
+
+
+</body>
+</html>
